@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorresGPT</title>
+</head>
+<body>
+    <h1>TorresGPT</h1>
+    <p id="message">Hello, I am TorresGPT, your helpful substitute 'teacher' that is subbing in! Ask me a question!</p>
+    <textarea id="textarea"></textarea><br>
+    <button id="button" onclick="answer()">Submit</button>
+    <script>
+        function answer() {
+            const message = document.getElementById('message');
+            const textarea = document.getElementById('textarea');
+            const button = document.getElementById('button');
+            if (textarea.value) {
+                console.log(textarea.value);
+                if (textarea.value.includes("Mrs. Torres")) {
+                    message.innerHTML = "Let Mrs. Torres look after her son in peace and do your work!";
+                } else if (textarea.value.includes("cheat") || textarea.value.includes("bathroom") || textarea.value.includes("restroom")) {
+                    message.innerHTML = "I <strong>KNEW</strong> that you were going to cheat! Now, you are getting a <strong>REFERRAL!</strong>";
+                    textarea.style.display = 'none';
+                    button.style.display = 'none';
+                } else if (textarea.value.includes("1+1") || textarea.value.includes("1 + 1")) {
+                    message.innerHTML = "The answer is 2. Do you think I'm a <strong>FRAUD</strong>?!";
+                } else if (textarea.value.includes("you be back")) {
+                    message.innerHTML = "I bet you're asking me to see when you can play games. Well guess what. I'm coming back now.";
+                } else if (["who", "what", "when", "why", "where", "how"]
+                .some(word => textarea.value.includes(word))) { 
+                    message.innerHTML = `I don't know, Google might tell you. <a href="https://www.google.com/search?q=${textarea.value}">Google link because I'm kind.</a>`;
+                } else {
+                    message.innerHTML = 'How did you manage to write a question without "who", "what", "when", "why", "where", or "how"?'
+                }
+            }  else {
+                message.innerHTML = "Please type your question below.";
+            }
+        }
+    </script>
+</body>
+</html>
